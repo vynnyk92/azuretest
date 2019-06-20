@@ -4,14 +4,24 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using AzureTest.Models;
 
 namespace AzureTest.Controllers
 {
     public class HomeController : Controller
     {
+        public IConfiguration config { get; set; }
+        public HomeController(IConfiguration configuration )
+        {
+            this.config = configuration;
+        }
+
         public IActionResult Index()
         {
+
+            ViewData["Message"] = this.config["Greeting"];
+
             return View();
         }
 
