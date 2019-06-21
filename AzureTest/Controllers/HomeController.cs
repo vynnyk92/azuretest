@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using AzureTest.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AzureTest.Controllers
 {
@@ -17,6 +18,7 @@ namespace AzureTest.Controllers
             this.config = configuration;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
 
